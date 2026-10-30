@@ -1,0 +1,23 @@
+-include .env
+
+build:; forge build
+
+deploy-sepolia:
+	forge script script/DeployFundMe.s.sol:DeployFundMe \
+	--rpc-url $(SEPOLIA_RPC_URL) \
+	--private-key $(PRIVATE_KEY) \
+	--broadcast \
+	--gas-estimate-multiplier 130 \
+	--verify \
+	--etherscan-api-key $(ETHERSCAN_API_KEY) \
+	 -vvvv
+
+deploy-sepolia-test:
+	forge script script/DeployFundMe.s.sol:DeployFundMe \
+    --rpc-url $(SEPOLIA_RPC_URL) \
+    --private-key $(PRIVATE_KEY) \
+    --broadcast \
+	--gas-estimate-multiplier 200 \
+    -vvvv
+
+	
